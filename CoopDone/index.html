@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoopDone</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <div>
+      <h1 class="logo">CoopDone</h1>
+      <p class="tagline">Track. Prepare. Get your co-op done.</p>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" type="button">
+      🌙 Dark Mode
+    </button>
+  </div>
+</header>
+
+<!-- DAILY MOTIVATION -->
+<section class="motivation">
+  <div class="container">
+    <p id="daily-quote"></p>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard">
+  <div class="container dashboard-grid">
+
+    <div class="card">
+      <h3>Total Applications</h3>
+      <p id="total-applications">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Days Left (Co-op)</h3>
+      <p id="days-left">—</p>
+    </div>
+
+    <div class="card">
+      <h3>Next Deadline</h3>
+      <p id="next-deadline">—</p>
+    </div>
+
+    <div class="card">
+      <h3>Applied</h3>
+      <p id="count-applied">0</p>
+    </div>
+
+    <div class="card">
+      <h3>In Process</h3>
+      <p id="count-inprocess">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Interview</h3>
+      <p id="count-interview">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Rejected</h3>
+      <p id="count-rejected">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Weekly Target</h3>
+      <input type="number" id="weekly-target" placeholder="Set target per week" />
+      <p>Applied this week: <strong id="weekly-applied">0</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CO-OP DATE RANGE (THIS WAS MISSING) -->
+<section class="form-section">
+  <div class="container">
+    <h2>Co-op Timeline</h2>
+
+    <form class="two-col">
+      <div>
+        <label>Co-op Start Date</label>
+        <input type="date" id="coop-start" />
+      </div>
+
+      <div>
+        <label>Co-op End Date</label>
+        <input type="date" id="coop-end" />
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CHART -->
+<section class="chart-section">
+  <div class="container">
+    <h2>Application Status Overview</h2>
+    <div class="chart-card">
+      <canvas id="statusChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ADD / UPDATE FORM -->
+<section class="form-section">
+  <div class="container">
+    <h2>Add / Update Application</h2>
+
+    <form id="application-form">
+      <input type="hidden" id="edit-index" />
+
+      <div><label>Company</label><input name="company" required></div>
+      <div><label>Role</label><input name="role" required></div>
+
+      <div>
+        <label>Role Type</label>
+        <select name="roleType">
+          <option>Internship</option>
+          <option>Co-op</option>
+          <option>Full-time</option>
+          <option>Contract</option>
+        </select>
+      </div>
+
+      <div><label>Date Applied</label><input type="date" name="dateApplied"></div>
+      <div><label>Deadline</label><input type="date" name="deadline"></div>
+
+      <div>
+        <label>Status</label>
+        <select name="status">
+          <option>Applied</option>
+          <option>In Process</option>
+          <option>Interview</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Preparation Confidence</label>
+        <select name="confidence">
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select>
+      </div>
+
+      <div><label>Resume Link</label><input name="resumeLink" type="url"></div>
+      <div><label>Preparation Link</label><input name="prepLink" type="url"></div>
+      <div><label>Job / LinkedIn Link</label><input name="jobLink" type="url"></div>
+
+      <div class="full">
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+      </div>
+
+      <button type="submit">Save Application</button>
+    </form>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="table-section">
+  <div class="container">
+    <h2>Your Applications</h2>
+
+    <div class="csv-bar">
+      <input type="file" id="csv-import" accept=".csv" />
+      <button type="button" id="export-csv">Export CSV</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Deadline</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="applications-table"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 CoopDone by LSP Technologies INC. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

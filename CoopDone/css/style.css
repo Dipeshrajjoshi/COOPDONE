@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+:root {
+  --bg-main: #ffffff;
+  --bg-soft: #f6f7fb;
+  --bg-card: #ffffff;
+
+  --text-primary: #0b0f19;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+
+  --sky-main: #38bdf8;
+  --sky-soft: #7dd3fc;
+
+  --blue-main: #2563eb;
+  --amber-main: #f59e0b;
+  --green-main: #22c55e;
+  --red-main: #ef4444;
+
+  --border-soft: #e5e7eb;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-soft: 0 12px 30px rgba(0,0,0,0.08);
+  --shadow-hover: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   DARK MODE
+   ========================= */
+
+body.dark {
+  --bg-main: #0b1220;
+  --bg-soft: #0f172a;
+  --bg-card: #111827;
+
+  --text-primary: #e5e7eb;
+  --text-secondary: #cbd5f5;
+  --text-muted: #9ca3af;
+
+  --border-soft: #1f2937;
+
+  --shadow-soft: 0 12px 30px rgba(0,0,0,0.6);
+  --shadow-hover: 0 18px 45px rgba(0,0,0,0.8);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--bg-main), var(--bg-soft));
+  color: var(--text-primary);
+  line-height: 1.65;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+  background: linear-gradient(135deg, #facc15, #fde68a);
+  padding: 60px 0 72px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.logo {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 1.05rem;
+  color: #5b4b00;
+}
+
+/* =========================================================
+   MOTIVATION
+   ========================================================= */
+
+.motivation {
+  margin-top: -36px;
+}
+
+.motivation p {
+  background: var(--bg-card);
+  padding: 22px 26px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard {
+  margin-top: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px;
+}
+
+.card {
+  background: var(--bg-card);
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(99,102,241,0.12), transparent);
+  opacity: 0;
+  pointer-events: none; /* FIX: allow clicks */
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.card p {
+  margin-top: 6px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-section {
+  margin-top: 56px;
+}
+
+form {
+  background: var(--bg-card);
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+input,
+select,
+textarea {
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--sky-main);
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.25);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Save Application */
+#application-form button[type="submit"] {
+  background: linear-gradient(135deg, var(--sky-main), var(--sky-soft));
+  color: #ffffff;
+  justify-self: end;
+  grid-column: span 1;
+  min-width: 180px;
+}
+
+/* Export CSV */
+#export-csv {
+  background: linear-gradient(135deg, var(--sky-main), var(--sky-soft));
+  color: #ffffff;
+}
+
+/* Delete button */
+button.delete-btn {
+  background: linear-gradient(135deg, var(--red-main), #f87171);
+  color: #ffffff;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Disabled */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-applied { background: rgba(37,99,235,0.15); color: var(--blue-main); }
+.status-inprocess { background: rgba(245,158,11,0.15); color: var(--amber-main); }
+.status-interview { background: rgba(34,197,94,0.15); color: var(--green-main); }
+.status-offer { background: rgba(56,189,248,0.2); color: var(--sky-main); }
+.status-rejected { background: rgba(239,68,68,0.15); color: var(--red-main); }
+
+/* =========================================================
+   CSV BAR
+   ========================================================= */
+
+.csv-bar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+th, td {
+  padding: 16px;
+  font-size: 0.9rem;
+}
+
+tbody tr:hover {
+  background: rgba(148,163,184,0.15);
+}
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+.chart-card {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+#statusChart {
+  max-height: 300px;
+}
+
+/* =========================================================
+   DELETE CONFIRMATION MODAL
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: var(--bg-card);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-hover);
+}
+
+.modal h3 {
+  margin-bottom: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  margin-top: 80px;
+  padding: 26px;
+  text-align: center;
+  color: var(--text-muted);
+}
+/* =========================================================
+   FINAL FIX: Save Application button (layout + size)
+   ========================================================= */
+
+#application-form button[type="submit"] {
+  height: 48px;                 /* SAME as input visual height */
+  padding: 0 24px;              /* remove vertical padding */
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: var(--radius-md);
+
+  grid-column: span 1;          /* DO NOT stretch */
+  justify-self: end;            /* align right */
+  align-self: end;              /* align bottom with inputs */
+
+  min-width: 180px;
+}
+
+/* Prevent hover from enlarging layout */
+#application-form button[type="submit"]:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   Dark Mode Toggle Button
+   ========================= */
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dark-mode-toggle {
+  background: rgba(255, 255, 255, 0.25);
+  color: #0b0f19;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  backdrop-filter: blur(6px);
+}
+
+body.dark #dark-mode-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  color: #e5e7eb;
+}
